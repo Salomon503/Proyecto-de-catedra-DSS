@@ -1,6 +1,6 @@
 # Proyecto-de-catedra-DSS
 
-##  Grupo de Trabajo
+##  Grupo de Trabajo G7
 
 | Nombre                              | Carnet   |
 |-------------------------------------|----------|
@@ -14,7 +14,7 @@ ENLACE DE NOTION:
 https://www.notion.so/Centro-de-gesti-n-de-proyecto-de-catedra-DSS-775f51a14e834b57b6fbe86ac2d95b83?source=copy_link
 
 ENELACE DE LOS DISEÑOS MOCKUP UPS:
-
+https://www.figma.com/make/SaZ1vBMeiQhbiBNYsZtK9n/Proyecto-de-catedra-DSS?t=C1Cn8rBtry2UJ1cd-0&fullscreen=1&preview-route=%2Flogin
 
 ## Licencias Creative Commons implementada
 
