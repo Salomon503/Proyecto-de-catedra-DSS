@@ -1,0 +1,10 @@
+/vendor/
+composer.phar
+.env
+.DS_Store
+/.gemini/
+/error_log
+/php_errorlog
+*.log
+.vscode/
+.idea/
