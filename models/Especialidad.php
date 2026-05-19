@@ -1,12 +1,13 @@
 <?php
-require_once __DIR__ . '/../config/DB_Connection.php'; 
+
+require_once __DIR__ . '/../config/Database.php'; 
 
 class Especialidad {
     private $db;
 
     public function __construct() {
-        
-        $this->db = Database::getConnect(); 
+       
+        $this->db = Database::getInstance()->getConnection(); 
     }
 
     public function obtenerTodas() {
@@ -14,24 +15,23 @@ class Especialidad {
         $query = "SELECT * especialidades ORDER BY nombre_especialidad";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
-        
+      
         return $stmt->fetchRow(); 
     }
 
     public function obtenerPorId($id) {
-        
+     
         $query = "SELECT * FROM especialidades WHERE id_especialidad = :id_esp";
         $stmt = $this->db->prepare($query);
-        
         $stmt->execute([':id' => $id]);
         return $stmt->fetch();
     }
 
     public function crear($nombre) {
-        
+
         $query = "INSERT INTO especialidades (nombre) VALUES (:nombre)";
         $stmt = $this->db->prepare($query);
-       
+  
         return $stmt->execute([':nombre' => $name]);
     }
 
@@ -42,7 +42,5 @@ class Especialidad {
         
         return $stmt->execute([':id' => $nombre, ':nombre' => $id]);
     }
-
-    
 }
 ?>
