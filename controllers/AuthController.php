@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
 
-class AuthController {
-    public function login() {
+class AuthController
+{
+    public function login()
+    {
         if (isset($_SESSION['user_id'])) {
             header("Location: index.php?action=dashboard");
             exit;
@@ -10,7 +12,8 @@ class AuthController {
         require_once __DIR__ . '/../views/auth/login.php';
     }
 
-    public function authenticate() {
+    public function authenticate()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $correo = $_POST['correo'] ?? '';
             $contrasena = $_POST['contrasena'] ?? '';
@@ -32,7 +35,8 @@ class AuthController {
         }
     }
 
-    public function register() {
+    public function register()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Validaciones
             $correo = $_POST['correo'] ?? '';
@@ -96,7 +100,7 @@ class AuthController {
                     $_SESSION['user_id'] = $idUsuario;
                     $_SESSION['rol'] = 3;
                     $_SESSION['user_name'] = $_POST['primer_nombre'] . ' ' . $_POST['primer_apellido'];
-                    
+
                     header("Location: index.php?action=dashboard");
                     exit;
                 }
@@ -108,7 +112,8 @@ class AuthController {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         $usuarioModel = new Usuario();
         $usuarioModel->cerrarSesion();
         header("Location: index.php?action=login");

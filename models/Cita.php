@@ -110,8 +110,11 @@ class Cita {
         }
 
         if (!empty($filtros['search'])) {
-            $condiciones[] = "(p.primer_nombre LIKE :search OR p.primer_apellido LIKE :search OR c.motivo LIKE :search)";
-            $params[':search'] = "%" . $filtros['search'] . "%";
+            $condiciones[] = "(p.primer_nombre LIKE :search1 OR p.primer_apellido LIKE :search2 OR c.motivo LIKE :search3)";
+            $searchTerm = "%" . $filtros['search'] . "%";
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
         }
 
         if (!empty($filtros['id_paciente'])) {

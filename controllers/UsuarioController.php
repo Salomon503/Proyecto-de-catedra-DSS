@@ -180,7 +180,7 @@ class UsuarioController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             $idUsuario = $_POST['id'];
 
-            // Prevent deleting yourself
+            // Evitar autoeliminarse
             if ($idUsuario == $_SESSION['user_id']) {
                 header("Location: index.php?action=usuarios&error=self_delete");
                 exit;
@@ -189,15 +189,15 @@ class UsuarioController {
             $db = Database::getInstance()->getConnection();
             
             try {
-                // To avoid FK constraints, we would normally delete from dependants first or use ON DELETE CASCADE.
-                // Assuming we just delete from usuarios and let DB handle CASCADE, or catch exception
+                // Para evitar restricciones de FK, normalmente eliminaríamos primero de las dependientes o usaríamos ON DELETE CASCADE.
+                // Asumimos que simplemente eliminamos de usuarios y dejamos que la base de datos maneje CASCADE, o capturamos la excepción
                 $query = "DELETE FROM usuarios WHERE id_usuario = :id_usuario";
                 $stmt = $db->prepare($query);
                 $stmt->execute([':id_usuario' => $idUsuario]);
                 
                 header("Location: index.php?action=usuarios&success=deleted");
             } catch (PDOException $e) {
-                // FK violation likely
+                // Probable violación de FK
                 header("Location: index.php?action=usuarios&error=fk_violation");
             }
             exit;
