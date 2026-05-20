@@ -154,6 +154,10 @@ switch ($action) {
         $calificacionController = new CalificacionController();
         $calificacionController->index();
         break;
+    case 'eliminar_calificacion':
+        $calificacionController = new CalificacionController();
+        $calificacionController->delete();
+        break;
     case 'especialidades':
         $especialidadController = new EspecialidadController();
         $especialidadController->index();
